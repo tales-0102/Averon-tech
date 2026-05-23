@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Averon Technology — AI-Powered Growth Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+/* ─── RESET ─────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+/* ─── TOKENS ─────────────────────────── */
+:root{
+  --green:#0B3D2E;
+  --green-mid:#0f5240;
+  --green-light:#16724f;
+  --blue:#2563EB;
+  --cyan:#22D3EE;
+  --cyan-dim:rgba(34,211,238,0.13);
+  --white:#FFFFFF;
+  --w70:rgba(255,255,255,0.70);
+  --w40:rgba(255,255,255,0.40);
+  --w15:rgba(255,255,255,0.07);
+  --bg:#050c0a;
+  --bg-card:#0b1812;
+  --bg-card2:#081410;
+  --border:rgba(34,211,238,0.12);
+  --F:'Syne',sans-serif;
+  --FB:'DM Sans',sans-serif;
+}
+
+/* ─── BASE ─────────────────────────── */
+body{background:var(--bg);color:var(--white);font-family:var(--FB);font-size:16px;line-height:1.65;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.5;}
+a{text-decoration:none;}
+section{position:relative;overflow:hidden;}
+.container{max-width:1160px;margin:0 auto;padding:0 clamp(1.25rem,5vw,4rem);}
+
+/* ─── NAV ─────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem clamp(1.25rem,4vw,3.5rem);
+  background:rgba(5,12,10,0.88);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--border);
+  gap:1.5rem;
+}
+.nav-logo{font-family:var(--F);font-weight:800;font-size:1.15rem;letter-spacing:-.025em;color:var(--white);white-space:nowrap;}
+.nav-logo em{font-style:normal;color:var(--cyan);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{
+  position:relative;color:var(--w70);font-size:.855rem;font-weight:400;letter-spacing:.02em;
+  padding-bottom:.2rem;transition:color .22s;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;
+  background:var(--cyan);border-radius:2px;transition:width .28s cubic-bezier(.4,0,.2,1);
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  background:var(--cyan);color:#050c0a;
+  padding:.5rem 1.35rem;border-radius:2rem;
+  font-size:.855rem;font-weight:700;
+  font-family:var(--F);white-space:nowrap;
+  transition:opacity .2s,transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 22px rgba(34,211,238,.22);}
+.nav-hamburger{display:none;background:transparent;border:none;cursor:pointer;color:var(--w70);padding:.25rem;}
+.mobile-menu{display:none;}
+
+/* ─── CHIPS & TYPOGRAPHY ─────────────────────────── */
+.chip{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.68rem;font-weight:700;font-family:var(--F);
+  letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);
+  border:1px solid rgba(34,211,238,.28);padding:.32rem .88rem;
+  border-radius:2rem;background:rgba(34,211,238,.05);margin-bottom:1.25rem;
+}
+.chip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--cyan);box-shadow:0 0 7px var(--cyan);}
+.sh{font-family:var(--F);font-size:clamp(1.9rem,3.8vw,3.1rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;}
+.sh .c{color:var(--cyan);}
+.sub{font-size:1rem;color:var(--w70);line-height:1.72;font-weight:300;max-width:500px;}
+
+/* ─── BUTTONS ─────────────────────────── */
+.btn-p{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--cyan);color:#050c0a;
+  padding:.82rem 1.9rem;border-radius:2rem;
+  font-family:var(--F);font-weight:700;font-size:.9rem;
+  transition:all .25s;border:none;cursor:pointer;
+}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(34,211,238,.26);}
+.btn-g{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;color:var(--white);
+  padding:.82rem 1.9rem;border-radius:2rem;
+  font-family:var(--F);font-weight:600;font-size:.9rem;
+  border:1px solid rgba(255,255,255,.18);transition:all .25s;
+}
+.btn-g:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);}
+
+/* ─── REVEAL ─────────────────────────── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}.d5{transition-delay:.40s;}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:7.5rem 0 6rem;position:relative;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 55% at 62% 38%,rgba(11,61,46,.52) 0%,transparent 68%),
+    radial-gradient(ellipse 38% 40% at 82% 72%,rgba(37,99,235,.1) 0%,transparent 60%),
+    radial-gradient(ellipse 45% 55% at 18% 78%,rgba(34,211,238,.05) 0%,transparent 60%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(34,211,238,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(34,211,238,.035) 1px,transparent 1px);
+  background-size:58px 58px;
+  mask-image:radial-gradient(ellipse 85% 80% at 50% 50%,black 20%,transparent 100%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;gap:3rem;
+  width:100%;max-width:1160px;margin:0 auto;
+  padding:0 clamp(1.25rem,5vw,4rem);
+}
+.hero-left{max-width:640px;}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:.7rem;margin-bottom:1.6rem;
+  font-size:.78rem;font-weight:400;color:var(--w70);letter-spacing:.05em;
+}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 2.2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 8px var(--cyan);}50%{box-shadow:0 0 20px var(--cyan),0 0 35px rgba(34,211,238,.3);}}
+h1{font-family:var(--F);font-size:clamp(2.6rem,5.5vw,5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;}
+h1 .ac{color:var(--cyan);}
+h1 .sk{-webkit-text-stroke:1.5px rgba(34,211,238,.45);color:transparent;}
+.hero-sub{font-size:1.08rem;color:var(--w70);max-width:500px;line-height:1.72;margin-bottom:2.25rem;font-weight:300;}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.hero-stats{display:flex;gap:2.75rem;flex-wrap:wrap;}
+.stat-n{font-family:var(--F);font-size:1.7rem;font-weight:800;line-height:1;}
+.stat-n span{color:var(--cyan);}
+.stat-l{font-size:.75rem;color:var(--w40);margin-top:.25rem;letter-spacing:.04em;}
+.hero-orb{
+  flex-shrink:0;width:min(38vw,460px);height:min(38vw,460px);
+  border-radius:50%;border:1px solid rgba(34,211,238,.09);
+  background:radial-gradient(circle at 36% 34%,rgba(11,61,46,.75),rgba(5,12,10,.1));
+  box-shadow:inset 0 0 70px rgba(34,211,238,.04),0 0 100px rgba(11,61,46,.35);
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.orb-r{position:absolute;border-radius:50%;border:1px solid rgba(34,211,238,.06);}
+.orb-r1{inset:10%;animation:spin 32s linear infinite;}
+.orb-r2{inset:22%;animation:spin 20s linear infinite reverse;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.orb-txt{font-family:var(--F);font-size:clamp(.9rem,2vw,1.55rem);font-weight:800;text-align:center;line-height:1.25;letter-spacing:-.02em;position:relative;z-index:2;}
+.orb-txt span{color:var(--cyan);display:block;}
+
+/* ══════════════════════════════════════
+   PROBLEM
+══════════════════════════════════════ */
+#problem{padding:6rem 0;}
+.prob-head{margin-bottom:3.5rem;}
+.prob-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  border:1px solid var(--border);border-radius:1.25rem;overflow:hidden;
+}
+.prob-card{
+  padding:2rem 1.75rem;background:var(--bg-card);
+  transition:background .3s;
+}
+.prob-card:hover{background:#0d2018;}
+.prob-icon{
+  width:38px;height:38px;border-radius:9px;
+  background:rgba(34,211,238,.07);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.1rem;color:var(--cyan);
+}
+.prob-icon svg{width:18px;height:18px;stroke-width:1.7;}
+.prob-card h3{font-family:var(--F);font-size:.92rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.01em;}
+.prob-card p{font-size:.82rem;color:var(--w70);line-height:1.65;font-weight:300;}
+
+/* ══════════════════════════════════════
+   SERVICES
+══════════════════════════════════════ */
+#services{padding:6rem 0;}
+.srv-intro{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:end;margin-bottom:4rem;}
+.srv-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  border-radius:1.25rem;overflow:hidden;
+}
+.srv-card{
+  background:var(--bg-card2);padding:1.75rem 1.6rem;
+  transition:background .28s;position:relative;overflow:hidden;
+}
+.srv-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(34,211,238,.04),transparent);opacity:0;transition:opacity .28s;}
+.srv-card:hover{background:#0c1e16;}
+.srv-card:hover::after{opacity:1;}
+.srv-icon{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(34,211,238,.07);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;color:var(--cyan);
+}
+.srv-icon svg{width:16px;height:16px;stroke-width:1.75;}
+.srv-num{font-family:var(--F);font-size:.65rem;font-weight:700;color:var(--cyan);letter-spacing:.1em;margin-bottom:.35rem;opacity:.65;}
+.srv-title{font-family:var(--F);font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.5rem;letter-spacing:-.01em;}
+.srv-desc{font-size:.78rem;color:var(--w40);line-height:1.62;font-weight:300;}
+
+/* ══════════════════════════════════════
+   PROCESS
+══════════════════════════════════════ */
+#process{padding:6rem 0;background:linear-gradient(180deg,var(--bg) 0%,#060e0b 50%,var(--bg) 100%);}
+.proc-head{text-align:center;margin-bottom:4.5rem;}
+.proc-head .sub{margin:.9rem auto 0;}
+.proc-steps{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;position:relative;
+}
+.proc-steps::before{
+  content:'';position:absolute;top:2.1rem;left:9%;right:9%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(34,211,238,.22),rgba(34,211,238,.22),transparent);
+}
+.proc-step{text-align:center;padding:0 .75rem;}
+.step-circ{
+  width:4.25rem;height:4.25rem;border-radius:50%;
+  border:1px solid var(--border);background:var(--bg-card);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.35rem;position:relative;
+  color:var(--cyan);transition:border-color .28s,background .28s;
+}
+.step-circ:hover{border-color:var(--cyan);background:rgba(34,211,238,.06);}
+.step-circ svg{width:20px;height:20px;stroke-width:1.6;}
+.step-circ .sn{
+  position:absolute;top:-5px;right:-5px;width:18px;height:18px;
+  border-radius:50%;background:var(--green-light);
+  font-family:var(--F);font-size:.58rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-title{font-family:var(--F);font-size:.82rem;font-weight:700;margin-bottom:.4rem;letter-spacing:-.01em;}
+.step-desc{font-size:.75rem;color:var(--w40);line-height:1.58;font-weight:300;}
+
+/* ══════════════════════════════════════
+   PORTFOLIO — FIXED
+══════════════════════════════════════ */
+#portfolio{padding:6rem 0;}
+.port-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;gap:1.5rem;flex-wrap:wrap;}
+.port-filters{display:flex;gap:.45rem;flex-wrap:wrap;}
+.pf-btn{
+  padding:.42rem 1rem;border-radius:2rem;
+  font-size:.73rem;font-family:var(--F);font-weight:600;
+  border:1px solid var(--border);background:transparent;
+  color:var(--w40);cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.pf-btn.active,.pf-btn:hover{background:var(--cyan-dim);border-color:rgba(34,211,238,.4);color:var(--cyan);}
+
+/* ── Grid: 3-col base ── */
+.port-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.1rem;
+  /* prevent grid from being stretched by child content */
+  align-items:start;
+}
+
+/* ── Card shell — must NOT grow from media ── */
+.port-item{
+  border-radius:.9rem;
+  overflow:hidden;          /* clip anything that escapes */
+  border:1px solid var(--border);
+  background:var(--bg-card);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  cursor:pointer;
+  /* never let a card expand beyond its column */
+  min-width:0;
+  width:100%;
+}
+.port-item:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.28);box-shadow:0 12px 40px rgba(0,0,0,.35);}
+.port-item.wide{grid-column:span 2;}
+
+/* ── Thumb: fixed aspect-ratio box, media is INSIDE ── */
+.port-thumb{
+  position:relative;
+  width:100%;
+  overflow:hidden;          /* CRITICAL — clips over-sized media */
+  background:#060e0b;
+  display:block;            /* block, not flex, so aspect-ratio works */
+  /* media must never push this taller than the ratio dictates */
+  flex-shrink:0;
+}
+/* Aspect ratios via the modern CSS property */
+.port-thumb.ratio-land { aspect-ratio:16/10; }
+.port-thumb.ratio-sq   { aspect-ratio:1/1;   }
+.port-thumb.ratio-port { aspect-ratio:9/16;  }
+
+/* ── All media absolutely fills the thumb box ── */
+.port-thumb img,
+.port-thumb video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+/* ── Placeholder (shown when no image yet) ── */
+.port-placeholder{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.6rem;
+  background:linear-gradient(135deg,#0b1f18,#060f0c);
+  /* placeholder must never overflow */
+  overflow:hidden;
+}
+.port-placeholder .up-icon{color:rgba(34,211,238,.25);}
+.port-placeholder .up-icon svg{width:28px;height:28px;stroke-width:1.4;}
+.port-placeholder .up-label{font-size:.68rem;font-family:var(--F);font-weight:600;letter-spacing:.08em;color:rgba(34,211,238,.22);text-transform:uppercase;}
+
+/* ── Play button overlay ── */
+.port-thumb .play-btn{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(34,211,238,.15);border:1.5px solid var(--cyan);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cyan);pointer-events:none;
+  z-index:2;
+}
+.port-thumb .play-btn svg{width:18px;height:18px;}
+
+/* ── Info strip below thumb ── */
+.port-info{padding:1.1rem 1.35rem;}
+.port-cat{font-size:.64rem;font-weight:700;font-family:var(--F);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);opacity:.75;margin-bottom:.3rem;}
+.port-name{font-family:var(--F);font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:.2rem;letter-spacing:-.01em;}
+.port-brand{font-size:.75rem;color:var(--w40);}
+
+/* ══════════════════════════════════════
+   RESULTS
+══════════════════════════════════════ */
+#results{padding:6rem 0;background:linear-gradient(180deg,var(--bg),#060e0b);}
+.res-head{text-align:center;margin-bottom:3.5rem;}
+.res-head .sub{margin:.9rem auto 0;}
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.res-block{
+  padding:2.25rem 2rem;border:1px solid var(--border);border-radius:1.25rem;
+  background:var(--bg-card);transition:border-color .28s;
+}
+.res-block:hover{border-color:rgba(34,211,238,.28);}
+.res-num{font-family:var(--F);font-size:2.8rem;font-weight:700;color:var(--cyan);line-height:1;margin-bottom:.45rem;letter-spacing:-.04em;}
+.res-title{font-family:var(--F);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem;letter-spacing:-.01em;}
+.res-desc{font-size:.84rem;color:var(--w70);line-height:1.65;font-weight:300;}
+
+/* ══════════════════════════════════════
+   TEAM
+══════════════════════════════════════ */
+#team{padding:6rem 0;}
+.team-head{text-align:center;margin-bottom:4rem;}
+.team-head .sub{margin:.9rem auto 0;max-width:440px;}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.75rem;max-width:760px;margin:0 auto;}
+.team-card{
+  border:1px solid var(--border);border-radius:1.25rem;overflow:hidden;
+  background:var(--bg-card);transition:border-color .3s,transform .3s;
+}
+.team-card:hover{border-color:rgba(34,211,238,.28);transform:translateY(-4px);}
+.team-photo{
+  aspect-ratio:3/3.2;position:relative;overflow:hidden;
+  background:linear-gradient(145deg,var(--green) 0%,#0a1e16 55%,#050c0a 100%);
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.team-avatar-ph{
+  width:130px;height:170px;border-radius:65px 65px 0 0;
+  background:linear-gradient(180deg,rgba(34,211,238,.12),rgba(11,61,46,.3));
+  border:1px solid rgba(34,211,238,.12);flex-shrink:0;
+}
+.team-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:180px;height:90px;background:radial-gradient(ellipse,rgba(34,211,238,.1),transparent 70%);}
+.team-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;}
+.team-info{padding:1.4rem 1.6rem;}
+.team-name{font-family:var(--F);font-size:1.1rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.2rem;}
+.team-role{font-size:.78rem;color:var(--cyan);font-weight:500;letter-spacing:.04em;margin-bottom:.65rem;}
+.team-bio{font-size:.8rem;color:var(--w40);line-height:1.65;font-weight:300;}
+
+/* ══════════════════════════════════════
+   PRICING — FULLY POPULATED
+══════════════════════════════════════ */
+#pricing{padding:6rem 0;background:linear-gradient(180deg,var(--bg),#060e0b);}
+.price-head{text-align:center;margin-bottom:3rem;}
+.price-head .sub{margin:.9rem auto 0;max-width:460px;}
+
+/* billing toggle */
+.billing-tabs{
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  margin-bottom:3rem;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:2rem;padding:.3rem;
+  width:fit-content;margin-left:auto;margin-right:auto;
+}
+.bill-btn{
+  padding:.45rem 1.35rem;border-radius:2rem;font-size:.8rem;
+  font-family:var(--F);font-weight:600;border:none;cursor:pointer;
+  background:transparent;color:var(--w40);transition:all .22s;
+}
+.bill-btn.active{background:var(--cyan);color:#050c0a;}
+
+/* price panels — one shown at a time */
+.price-panel{display:none;}
+.price-panel.active{display:block;}
+
+.price-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;max-width:980px;margin:0 auto;
+  align-items:start;
+}
+.pc{
+  border:1px solid var(--border);border-radius:1.25rem;
+  padding:2.25rem 1.85rem;background:var(--bg-card);position:relative;
+  transition:border-color .28s,transform .28s;
+}
+.pc:hover{border-color:rgba(34,211,238,.22);}
+.pc.feat{
+  border-color:rgba(34,211,238,.38);
+  background:linear-gradient(145deg,#0d2018,#081410);
+  transform:scale(1.035);
+}
+.pc-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--cyan);color:#050c0a;
+  font-family:var(--F);font-size:.62rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.28rem .95rem;border-radius:2rem;white-space:nowrap;
+}
+.pc-tier{font-family:var(--F);font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);opacity:.65;margin-bottom:.35rem;}
+.pc-name{font-family:var(--F);font-size:1.25rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.2rem;}
+.pc-tag{font-size:.78rem;color:var(--w40);font-weight:300;margin-bottom:1.5rem;}
+.pc-price{font-family:var(--F);line-height:1;margin-bottom:.25rem;}
+.pc-amount{font-size:2rem;font-weight:700;letter-spacing:-.04em;}
+.pc-currency{font-size:1rem;font-weight:600;color:var(--w70);margin-right:2px;vertical-align:super;font-size:.95rem;}
+.pc-period{font-size:.75rem;color:var(--w40);font-weight:400;display:block;margin-top:.25rem;}
+.pc-divider{height:1px;background:var(--border);margin:1.4rem 0;}
+.pc-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem;}
+.pc-features li{
+  display:flex;align-items:flex-start;gap:.55rem;
+  font-size:.8rem;color:var(--w70);line-height:1.5;font-weight:300;
+}
+.pc-features li::before{
+  content:'✓';color:var(--cyan);font-weight:700;font-size:.72rem;
+  margin-top:2px;flex-shrink:0;
+}
+.pc-features li.free-item{color:var(--cyan);opacity:.85;}
+.pc-features li.free-item::before{content:'★';font-size:.68rem;}
+
+/* ══════════════════════════════════════
+   CTA
+══════════════════════════════════════ */
+#cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden;}
+.cta-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 50%,rgba(11,61,46,.5) 0%,transparent 68%),
+    radial-gradient(ellipse 35% 40% at 25% 70%,rgba(37,99,235,.09) 0%,transparent 60%);
+}
+.cta-inner{position:relative;z-index:2;}
+.cta-h{font-family:var(--F);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:700;line-height:1.07;letter-spacing:-.03em;margin-bottom:1.25rem;}
+.cta-sub{font-size:1rem;color:var(--w70);max-width:420px;margin:0 auto 2.25rem;font-weight:300;line-height:1.72;}
+.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.25rem;}
+.cta-contacts{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;}
+.cta-link{
+  display:flex;align-items:center;gap:.45rem;
+  font-size:.84rem;color:var(--w40);transition:color .2s;
+}
+.cta-link svg{width:15px;height:15px;stroke-width:1.8;flex-shrink:0;}
+.cta-link:hover{color:var(--cyan);}
+.cta-note{font-size:.75rem;color:var(--w40);margin-top:.5rem;}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{padding:3rem 0;border-top:1px solid var(--border);}
+.footer-top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem;
+  padding-bottom:2.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem;
+}
+.ft-brand-name{font-family:var(--F);font-weight:800;font-size:1.1rem;letter-spacing:-.025em;margin-bottom:.6rem;}
+.ft-brand-name em{font-style:normal;color:var(--cyan);}
+.ft-tagline{font-size:.8rem;color:var(--w40);line-height:1.6;font-weight:300;max-width:220px;margin-bottom:1.1rem;}
+.ft-socials{display:flex;gap:.7rem;}
+.ft-social{
+  width:34px;height:34px;border-radius:50%;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--w40);transition:all .2s;
+}
+.ft-social:hover{border-color:var(--cyan);color:var(--cyan);}
+.ft-social svg{width:15px;height:15px;stroke-width:1.8;}
+.ft-col h4{font-family:var(--F);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w40);margin-bottom:1rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+.ft-col ul a{font-size:.82rem;color:var(--w40);transition:color .2s;}
+.ft-col ul a:hover{color:var(--cyan);}
+.ft-contact-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--w40);margin-bottom:.55rem;transition:color .2s;}
+.ft-contact-item:hover{color:var(--w70);}
+.ft-contact-item svg{width:14px;height:14px;stroke-width:1.8;flex-shrink:0;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.ft-copy{font-size:.75rem;color:var(--w40);}
+.ft-links{display:flex;gap:1.5rem;list-style:none;}
+.ft-links a{font-size:.75rem;color:var(--w40);transition:color .2s;}
+.ft-links a:hover{color:var(--cyan);}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:1024px){
+  .srv-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:860px){
+  .prob-grid{grid-template-columns:repeat(2,1fr);}
+  .port-grid{grid-template-columns:repeat(2,1fr);}
+  .port-item.wide{grid-column:span 1;}
+  .proc-steps{grid-template-columns:repeat(3,1fr);}
+  .proc-steps::before{display:none;}
+  .hero-orb{display:none;}
+  .srv-intro{grid-template-columns:1fr;}
+  .price-grid{grid-template-columns:1fr;}
+  .pc.feat{transform:scale(1);}
+  .res-grid{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .mobile-menu{
+    display:none;flex-direction:column;gap:0;
+    position:fixed;top:60px;left:0;right:0;z-index:190;
+    background:rgba(5,12,10,.97);border-bottom:1px solid var(--border);
+    padding:1rem 0;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:.75rem clamp(1.25rem,5vw,2rem);font-size:.95rem;color:var(--w70);border-bottom:1px solid rgba(34,211,238,.06);display:block;}
+  .mobile-menu a:hover{color:var(--cyan);}
+  .prob-grid{grid-template-columns:1fr;}
+  .srv-grid{grid-template-columns:1fr;}
+  .port-grid{grid-template-columns:1fr;}
+  .proc-steps{grid-template-columns:repeat(2,1fr);}
+  .hero-ctas{flex-direction:column;align-items:flex-start;}
+  .hero-stats{gap:1.75rem;}
+  .footer-top{grid-template-columns:1fr;}
+  .billing-tabs{flex-wrap:wrap;}
+  .port-filters{gap:.35rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════ -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Averon <em>Technology</em></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20Averon%20Technology%20services." class="nav-cta" target="_blank" rel="noopener">Start Growing →</a>
+  <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <i data-lucide="menu" style="width:22px;height:22px;"></i>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Services</a>
+  <a href="#process" onclick="this.closest('.mobile-menu').classList.remove('open')">Process</a>
+  <a href="#portfolio" onclick="this.closest('.mobile-menu').classList.remove('open')">Portfolio</a>
+  <a href="#pricing" onclick="this.closest('.mobile-menu').classList.remove('open')">Pricing</a>
+  <a href="#cta" onclick="this.closest('.mobile-menu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- ══ HERO ══════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left rv">
+      <div class="hero-eyebrow">
+        <div class="pulse-dot"></div>
+        AI-Powered Growth Systems for Modern Brands
+      </div>
+      <h1>Your Brand Deserves<br>a <span class="ac">System</span>, Not<br>Just <span class="sk">Content</span></h1>
+      <p class="hero-sub">Averon Technology builds AI-powered social media systems that attract, engage, and convert — so your business grows with intent, not just activity.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/923219437908?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20strategy%20call%20with%20Averon%20Technology." class="btn-p" target="_blank" rel="noopener">Book Free Strategy Call →</a>
+        <a href="#portfolio" class="btn-g">View Our Work</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-n">3<span>×</span></div><div class="stat-l">Avg. Engagement Growth</div></div>
+        <div><div class="stat-n">48<span>h</span></div><div class="stat-l">Content Delivered In</div></div>
+        <div><div class="stat-n">13<span>+</span></div><div class="stat-l">Growth Services</div></div>
+      </div>
+    </div>
+    <div class="hero-orb rv d3" aria-hidden="true">
+      <div class="orb-r orb-r1"></div>
+      <div class="orb-r orb-r2"></div>
+      <div class="orb-txt"><span>AI-Powered</span>Growth<br>Systems</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══════════════════════════════ -->
+<section id="problem">
+  <div class="container">
+    <div class="prob-head rv">
+      <div class="chip">The Problem</div>
+      <div class="sh">Why Most Brands Stay <span class="c">Invisible Online</span></div>
+      <p class="sub" style="margin-top:.9rem;">Posting content isn't a strategy. Most businesses waste time, money, and energy on social media with no clear system behind it.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card rv d1"><div class="prob-icon"><i data-lucide="crosshair"></i></div><h3>No Audience Clarity</h3><p>They don't know who they're really talking to, so their content attracts the wrong people — or no one at all.</p></div>
+      <div class="prob-card rv d2"><div class="prob-icon"><i data-lucide="shuffle"></i></div><h3>Random Posting, No Strategy</h3><p>Inconsistent content with no strategic intent. Every post is a guess instead of a calculated, intentional move.</p></div>
+      <div class="prob-card rv d3"><div class="prob-icon"><i data-lucide="palette"></i></div><h3>Weak Visual Identity</h3><p>Generic visuals that look like everyone else. No distinctive brand personality that makes people stop scrolling.</p></div>
+      <div class="prob-card rv d1"><div class="prob-icon"><i data-lucide="trending-down"></i></div><h3>No Conversion System</h3><p>Engagement doesn't translate to leads or sales. There's no funnel — just vanity metrics that pay no bills.</p></div>
+      <div class="prob-card rv d2"><div class="prob-icon"><i data-lucide="clock"></i></div><h3>Burning Time on Creation</h3><p>Owners spending hours creating content instead of running their business. It's unsustainable and unscalable.</p></div>
+      <div class="prob-card rv d3"><div class="prob-icon"><i data-lucide="cpu"></i></div><h3>Not Using AI Intelligently</h3><p>Either avoiding AI entirely or using it poorly — producing content that feels robotic and disconnects audiences.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="srv-intro">
+      <div class="rv"><div class="chip">What We Build</div><div class="sh">A Full-Stack <span class="c">Growth System</span> For Your Brand</div></div>
+      <div class="rv d2"><p class="sub">Every service is a connected piece of a larger growth engine — not a standalone task for hire.</p><a href="https://wa.me/923219437908?text=Hi%2C%20I%27d%20like%20a%20custom%20strategy%20for%20my%20brand." class="btn-g" style="margin-top:1.5rem;" target="_blank" rel="noopener">Get a Custom Strategy →</a></div>
+    </div>
+    <div class="srv-grid rv">
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="layout-dashboard"></i></div><div class="srv-num">01</div><div class="srv-title">Social Media Management</div><div class="srv-desc">End-to-end management of your social presence — planning, creation, scheduling, and community engagement handled for you.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="sparkles"></i></div><div class="srv-num">02</div><div class="srv-title">AI Content Creation</div><div class="srv-desc">Cutting-edge AI tools to produce high-volume, high-quality content that sounds human, moves fast, and never runs dry.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="compass"></i></div><div class="srv-num">03</div><div class="srv-title">Brand Strategy</div><div class="srv-desc">Before one post goes live, we define your positioning, voice, value proposition, and market differentiation with precision.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="users"></i></div><div class="srv-num">04</div><div class="srv-title">Audience Research</div><div class="srv-desc">Deep-dive analysis of your ideal customer — their psychographics, pain points, desires, and language so content always hits.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="map"></i></div><div class="srv-num">05</div><div class="srv-title">Content Strategy</div><div class="srv-desc">A documented, data-driven content plan built around your goals — pillars, formats, frequencies, and platform-specific tactics.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="fingerprint"></i></div><div class="srv-num">06</div><div class="srv-title">Brand Personality Design</div><div class="srv-desc">A distinct personality, tone of voice, and visual language that makes your brand recognizable and magnetic in any market.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="camera"></i></div><div class="srv-num">07</div><div class="srv-title">AI Product Photography</div><div class="srv-desc">Studio-quality product images generated with AI — at a fraction of the cost, with infinite creative control, zero shoot days.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="image"></i></div><div class="srv-num">08</div><div class="srv-title">AI Product Visuals</div><div class="srv-desc">Lifestyle scenes, brand collages, and ad-ready CGI-style compositions for your products — without needing a photographer.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="video"></i></div><div class="srv-num">09</div><div class="srv-title">Product Videos</div><div class="srv-desc">Cinematic product showcases and social-native clips designed to stop the scroll and drive genuine purchase intent.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="play-circle"></i></div><div class="srv-num">10</div><div class="srv-title">Reel Creation</div><div class="srv-desc">Trend-aware, algorithm-friendly Reels engineered for reach, engagement, and brand building — at scale and consistently.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="settings-2"></i></div><div class="srv-num">11</div><div class="srv-title">Content Systems</div><div class="srv-desc">Repeatable content operating systems built for your brand — so great content gets produced on autopilot, every month.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="target"></i></div><div class="srv-num">12</div><div class="srv-title">Ads Strategy</div><div class="srv-desc">Paid social planning and creative strategy — targeting frameworks, messaging hierarchies, and funnel architecture that converts.</div></div>
+      <div class="srv-card"><div class="srv-icon"><i data-lucide="bar-chart-2"></i></div><div class="srv-num">13</div><div class="srv-title">Content Optimization</div><div class="srv-desc">Data-backed analysis of what's working — testing, iterating, refining content performance so results compound over time.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══════════════════════════════ -->
+<section id="process">
+  <div class="container">
+    <div class="proc-head rv">
+      <div class="chip">How It Works</div>
+      <div class="sh">The Averon <span class="c">Growth Framework</span></div>
+      <p class="sub">Five connected phases that transform a social account into a brand with a compounding growth engine.</p>
+    </div>
+    <div class="proc-steps rv">
+      <div class="proc-step d1"><div class="step-circ"><i data-lucide="crosshair"></i><div class="sn">1</div></div><div class="step-title">Audience</div><div class="step-desc">Define your ideal customer down to their daily frustrations and desires</div></div>
+      <div class="proc-step d2"><div class="step-circ"><i data-lucide="map"></i><div class="sn">2</div></div><div class="step-title">Strategy</div><div class="step-desc">Build a full content and brand strategy mapped to your business goals</div></div>
+      <div class="proc-step d3"><div class="step-circ"><i data-lucide="sparkles"></i><div class="sn">3</div></div><div class="step-title">Content</div><div class="step-desc">Create premium AI-powered content that reflects your brand at full power</div></div>
+      <div class="proc-step d4"><div class="step-circ"><i data-lucide="bar-chart-2"></i><div class="sn">4</div></div><div class="step-title">Optimization</div><div class="step-desc">Analyze performance, iterate fast, and double down on what works</div></div>
+      <div class="proc-step d5"><div class="step-circ"><i data-lucide="trending-up"></i><div class="sn">5</div></div><div class="step-title">Growth</div><div class="step-desc">Compounding reach, authority, and revenue through systematic execution</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PORTFOLIO ══════════════════════════════ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="port-head rv">
+      <div>
+        <div class="chip">Selected Work</div>
+        <div class="sh">Built to <span class="c">Perform</span></div>
+      </div>
+      <div class="port-filters">
+        <button class="pf-btn active" data-filter="all">All</button>
+        <button class="pf-btn" data-filter="social">Social Posts</button>
+        <button class="pf-btn" data-filter="carousel">Carousel</button>
+        <button class="pf-btn" data-filter="brand">Brand Visuals</button>
+        <button class="pf-btn" data-filter="photo">AI Photography</button>
+        <button class="pf-btn" data-filter="ads">Product Ads</button>
+        <button class="pf-btn" data-filter="reels">Reels</button>
+        <button class="pf-btn" data-filter="video">Product Videos</button>
+      </div>
+    </div>
+
+    <div class="port-grid rv" id="portGrid">
+
+      <!-- ITEM 1 — Social Posts, wide (16:10) — IMAGE ADDED -->
+      <div class="port-item wide" data-cats="social">
+        <div class="port-thumb ratio-land">
+          <img src="image/1.jpg" alt="NourishCo Social Media Posts">
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Social Media Posts</div>
+          <div class="port-name">NourishCo — Health Brand Content System</div>
+          <div class="port-brand">E-commerce · 12 posts/month · 4.2× engagement lift</div>
+        </div>
+      </div>
+
+      <!-- ITEM 2 — Reel (9:16) — VIDEO PLACEHOLDER PRESERVED -->
+      <div class="port-item" data-cats="reels">
+        <div class="port-thumb ratio-port">
+          <div class="port-placeholder">
+            <div class="up-icon"><i data-lucide="film"></i></div>
+            <div class="up-label">Upload Reel — 9:16</div>
+          </div>
+          <div class="play-btn" aria-hidden="true"><i data-lucide="play"></i></div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Reels</div>
+          <div class="port-name">LuxeScent — Product Reveal Reel</div>
+          <div class="port-brand">Fragrance brand · 2.8M organic reach</div>
+        </div>
+      </div>
+
+      <!-- ITEM 3 — Brand Visual (1:1) — IMAGE ADDED -->
+      <div class="port-item" data-cats="brand">
+        <div class="port-thumb ratio-sq">
+          <img src="image/2.jpg" alt="Velour Apparel Brand System">
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Brand Visuals</div>
+          <div class="port-name">Velour Apparel — Full Brand System</div>
+          <div class="port-brand">Fashion startup · Logo, palette, voice</div>
+        </div>
+      </div>
+
+      <!-- ITEM 4 — AI Photography (1:1) — IMAGE ADDED -->
+      <div class="port-item" data-cats="photo">
+        <div class="port-thumb ratio-sq">
+          <img src="image/3.jpg" alt="Skinova AI Product Photography">
+        </div>
+        <div class="port-info">
+          <div class="port-cat">AI Product Photography</div>
+          <div class="port-name">Skinova — AI Studio Shoot</div>
+          <div class="port-brand">Skincare brand · 40 AI visuals</div>
+        </div>
+      </div>
+
+      <!-- ITEM 5 — Product Ad (16:10) — PLACEHOLDER -->
+      <div class="port-item" data-cats="ads">
+        <div class="port-thumb ratio-land">
+          <div class="port-placeholder">
+            <div class="up-icon"><i data-lucide="image"></i></div>
+            <div class="up-label">Upload Ad Creative — 16:10</div>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Product Ads</div>
+          <div class="port-name">GrindFuel — Performance Ad Set</div>
+          <div class="port-brand">Fitness supplements · 3.8× ROAS</div>
+        </div>
+      </div>
+
+      <!-- ITEM 6 — Carousel (1:1) — IMAGE ADDED -->
+      <div class="port-item" data-cats="carousel">
+        <div class="port-thumb ratio-sq">
+          <img src="image/4.jpg" alt="BrewLab Educational Carousel">
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Carousel Designs</div>
+          <div class="port-name">BrewLab — Educational Carousel</div>
+          <div class="port-brand">Specialty coffee · 48K saves</div>
+        </div>
+      </div>
+
+      <!-- ITEM 7 — Product Video, wide (16:10) — PLACEHOLDER -->
+      <div class="port-item wide" data-cats="video">
+        <div class="port-thumb ratio-land">
+          <div class="port-placeholder">
+            <div class="up-icon"><i data-lucide="video"></i></div>
+            <div class="up-label">Upload Product Video — 16:10</div>
+          </div>
+          <div class="play-btn" aria-hidden="true"><i data-lucide="play"></i></div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Product Videos</div>
+          <div class="port-name">Aurelia Jewels — Launch Film</div>
+          <div class="port-brand">Luxury accessories · 1.2M views</div>
+        </div>
+      </div>
+
+      <!-- ITEM 8 — Social + Brand (1:1) — IMAGE ADDED -->
+      <div class="port-item" data-cats="social brand">
+        <div class="port-thumb ratio-sq">
+          <img src="image/5.jpg" alt="Terranova Coffee Monthly Feed">
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Social Posts · Brand Visuals</div>
+          <div class="port-name">Terranova Coffee — Monthly Feed</div>
+          <div class="port-brand">Café chain · 90-day brand launch</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESULTS ══════════════════════════════ -->
+<section id="results">
+  <div class="container">
+    <div class="res-head rv">
+      <div class="chip">What You Get</div>
+      <div class="sh">Real Business <span class="c">Outcomes</span></div>
+      <p class="sub">Designed to deliver measurable, compounding results — not vanity metrics.</p>
+    </div>
+    <div class="res-grid rv">
+      <div class="res-block"><div class="res-num">3–5×</div><div class="res-title">Faster Content Output</div><div class="res-desc">Our AI-powered systems produce content at 3–5× the speed of traditional creation — without sacrificing quality, brand voice, or strategy.</div></div>
+      <div class="res-block"><div class="res-num">↑ 60%</div><div class="res-title">Average Engagement Growth</div><div class="res-desc">Brands that switch to a strategic content system consistently see 40–80% improvement in engagement rates within the first 90 days.</div></div>
+      <div class="res-block"><div class="res-num">∞</div><div class="res-title">Consistent Brand Presence</div><div class="res-desc">No more gaps, off-brand content, or creative burnout. Your brand shows up professionally every single day, on autopilot.</div></div>
+      <div class="res-block"><div class="res-num">ROI</div><div class="res-title">Content That Converts</div><div class="res-desc">Every piece of content is built with conversion in mind — guiding your audience from discovery to lead to paying customer.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM ══════════════════════════════ -->
+<section id="team">
+  <div class="container">
+    <div class="team-head rv">
+      <div class="chip">The People Behind It</div>
+      <div class="sh">Built by <span class="c">Strategists</span>, Not Marketers</div>
+      <p class="sub">We're not an agency that outsources your brand. We're a focused team obsessed with results.</p>
+    </div>
+    <div class="team-grid rv">
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-glow"></div>
+          <img src="image/img2.jpg" alt="Zaid Amin">
+        </div>
+        <div class="team-info">
+          <div class="team-name">Zaid Amin</div>
+          <div class="team-role">Founder</div>
+          <div class="team-bio">Helping startups and founders build scalable digital presence from the ground up.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo" style="background:linear-gradient(145deg,#0a1a2e 0%,#081018 55%,#050c0a 100%);">
+          <div class="team-glow" style="background:radial-gradient(ellipse,rgba(37,99,235,.1),transparent 70%);"></div>
+          <img src="image/img.jpg" alt="Kashaf Sarfraz">
+        </div>
+        <div class="team-info">
+          <div class="team-name">Kashaf Sarfraz</div>
+          <div class="team-role">Co-Founder</div>
+          <div class="team-bio">Growth strategist and AI systems architect. Visual storyteller and brand identity designer who transforms businesses into memorable brands through compelling aesthetics and strategic design.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══════════════════════════════ -->
+<section id="pricing">
+  <div class="container">
+    <div class="price-head rv">
+      <div class="chip">Investment</div>
+      <div class="sh">Simple, Transparent <span class="c">Pricing</span></div>
+      <p class="sub">Choose the growth package that fits where you are today — and scales with you.</p>
+    </div>
+
+    <div class="billing-tabs rv">
+      <button class="bill-btn active" data-period="monthly">Monthly</button>
+      <button class="bill-btn" data-period="biannual">6 Months</button>
+      <button class="bill-btn" data-period="yearly">Yearly</button>
+    </div>
+
+    <!-- ══ MONTHLY ══ -->
+    <div class="price-panel active" id="panel-monthly">
+      <div class="price-grid">
+        <!-- Basic -->
+        <div class="pc">
+          <div class="pc-tier">Basic</div>
+          <div class="pc-name">Foundation</div>
+          <div class="pc-tag">For brands just getting serious</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">29,999</span>
+            <span class="pc-period">per month</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>12 Strategic Social Media Posts</li>
+            <li>4 Reels</li>
+            <li>Basic Captions</li>
+            <li>Hashtag Research</li>
+            <li>Content Calendar</li>
+            <li>Basic Audience Research</li>
+            <li>Basic Content Strategy</li>
+            <li class="free-item">FREE Brand Audit</li>
+            <li class="free-item">FREE Bio Optimization</li>
+            <li class="free-item">FREE 15 Content Ideas</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Foundation%20Monthly%20plan." class="btn-g" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Get Started →</a>
+        </div>
+        <!-- Standard -->
+        <div class="pc feat">
+          <div class="pc-badge">Most Popular</div>
+          <div class="pc-tier">Standard</div>
+          <div class="pc-name">Momentum</div>
+          <div class="pc-tag">For brands ready to scale</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">59,999</span>
+            <span class="pc-period">per month</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>20 Premium Posts</li>
+            <li>8 Reels</li>
+            <li>Advanced Captions</li>
+            <li>Full Content Strategy</li>
+            <li>Audience Research</li>
+            <li>Monthly Strategy Call</li>
+            <li>Engagement Strategy</li>
+            <li>Brand Personality Design</li>
+            <li>AI Visual Content</li>
+            <li>Story Designs</li>
+            <li>Competitor Research</li>
+            <li>CTA Optimization</li>
+            <li class="free-item">FREE Hook Strategy</li>
+            <li class="free-item">FREE AI Product Visual</li>
+            <li class="free-item">FREE Performance Report</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Momentum%20Monthly%20plan." class="btn-p" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Start Growing →</a>
+        </div>
+        <!-- Premium -->
+        <div class="pc">
+          <div class="pc-tier">Premium</div>
+          <div class="pc-name">Authority</div>
+          <div class="pc-tag">For brands that want to dominate</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">1,19,999</span>
+            <span class="pc-period">per month</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>30+ Premium Posts</li>
+            <li>12–16 Reels</li>
+            <li>Full Content System</li>
+            <li>Full Brand Strategy</li>
+            <li>Advanced Audience Psychology</li>
+            <li>AI Product Photography</li>
+            <li>Product Ads</li>
+            <li>Product Videos</li>
+            <li>Funnel Based Content</li>
+            <li>Weekly Strategy Calls</li>
+            <li>Premium Creative Direction</li>
+            <li>Full Analytics Tracking</li>
+            <li>Growth Optimization</li>
+            <li>Priority Support</li>
+            <li class="free-item">FREE Brand Consultation</li>
+            <li class="free-item">FREE Launch Strategy</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Authority%20Monthly%20plan." class="btn-g" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Apply Now →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 6 MONTHS ══ -->
+    <div class="price-panel" id="panel-biannual">
+      <div class="price-grid">
+        <!-- Basic -->
+        <div class="pc">
+          <div class="pc-tier">Basic</div>
+          <div class="pc-name">Foundation</div>
+          <div class="pc-tag">Consistent growth over 6 months</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">1,59,999</span>
+            <span class="pc-period">6-month package</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>12 Posts / month</li>
+            <li>4 Reels / month</li>
+            <li>Basic Strategy</li>
+            <li class="free-item">FREE Content Planner</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Foundation%206-Month%20plan." class="btn-g" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Get Started →</a>
+        </div>
+        <!-- Standard -->
+        <div class="pc feat">
+          <div class="pc-badge">Most Popular</div>
+          <div class="pc-tier">Standard</div>
+          <div class="pc-name">Momentum</div>
+          <div class="pc-tag">Scale with strategy over 6 months</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">3,29,999</span>
+            <span class="pc-period">6-month package</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>20 Posts / month</li>
+            <li>8 Reels / month</li>
+            <li>Advanced Strategy</li>
+            <li>Brand Personality Design</li>
+            <li>AI Visual Content</li>
+            <li class="free-item">FREE Reel Hook Pack</li>
+            <li class="free-item">FREE Visual Identity Direction</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Momentum%206-Month%20plan." class="btn-p" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Start Growing →</a>
+        </div>
+        <!-- Premium -->
+        <div class="pc">
+          <div class="pc-tier">Premium</div>
+          <div class="pc-name">Authority</div>
+          <div class="pc-tag">Full domination over 6 months</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">6,79,999</span>
+            <span class="pc-period">6-month package</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>30+ Posts / month</li>
+            <li>12–16 Reels / month</li>
+            <li>Full Growth System</li>
+            <li>AI Product Shoots</li>
+            <li>Product Videos</li>
+            <li>Weekly Calls</li>
+            <li>Priority Support</li>
+            <li class="free-item">FREE Funnel Plan</li>
+            <li class="free-item">FREE Brand Positioning Strategy</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Authority%206-Month%20plan." class="btn-g" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Apply Now →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ YEARLY ══ -->
+    <div class="price-panel" id="panel-yearly">
+      <div class="price-grid">
+        <!-- Basic -->
+        <div class="pc">
+          <div class="pc-tier">Basic</div>
+          <div class="pc-name">Foundation</div>
+          <div class="pc-tag">Best value for long-term growth</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">3,19,999</span>
+            <span class="pc-period">per year</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>12 Posts / month</li>
+            <li>4 Reels / month</li>
+            <li>Basic Growth System</li>
+            <li class="free-item">FREE Social Media Audit</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Foundation%20Yearly%20plan." class="btn-g" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Get Started →</a>
+        </div>
+        <!-- Standard -->
+        <div class="pc feat">
+          <div class="pc-badge">Most Popular</div>
+          <div class="pc-tier">Standard</div>
+          <div class="pc-name">Momentum</div>
+          <div class="pc-tag">Maximum value for serious brands</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">6,49,999</span>
+            <span class="pc-period">per year</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>20 Posts / month</li>
+            <li>8 Reels / month</li>
+            <li>Full Content System</li>
+            <li>Brand Personality Design</li>
+            <li>AI Visuals</li>
+            <li class="free-item">FREE Brand Voice Guide</li>
+            <li class="free-item">FREE 30 Content Hooks</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Momentum%20Yearly%20plan." class="btn-p" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Start Growing →</a>
+        </div>
+        <!-- Premium -->
+        <div class="pc">
+          <div class="pc-tier">Premium</div>
+          <div class="pc-name">Authority</div>
+          <div class="pc-tag">Complete yearly growth machine</div>
+          <div class="pc-price">
+            <span class="pc-currency">Rs.</span><span class="pc-amount">12,99,999</span>
+            <span class="pc-period">per year</span>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-features">
+            <li>30+ Posts / month</li>
+            <li>12–16 Reels / month</li>
+            <li>Full Brand Strategy</li>
+            <li>Product Videos</li>
+            <li>AI Product Photography</li>
+            <li>Weekly Calls</li>
+            <li>VIP Support</li>
+            <li class="free-item">FREE Funnel System</li>
+            <li class="free-item">FREE Quarterly Growth Plan</li>
+          </ul>
+          <a href="https://wa.me/923219437908?text=Hi%2C%20I%27m%20interested%20in%20the%20Authority%20Yearly%20plan." class="btn-g" style="width:100%;justify-content:center;" target="_blank" rel="noopener">Apply Now →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══════════════════════════════ -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="container">
+    <div class="cta-inner rv">
+      <div class="chip" style="margin:0 auto 1.35rem;">Limited Spots Available</div>
+      <div class="cta-h">Ready to Build a Brand<br>That <span style="color:var(--cyan);">Grows?</span></div>
+      <p class="cta-sub">Book a free 30-minute strategy call. We'll audit your current presence, map your growth opportunity, and show you exactly what a system looks like for your brand.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/923219437908?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20strategy%20call." class="btn-p" style="font-size:.95rem;padding:.9rem 2.25rem;" target="_blank" rel="noopener">
+          <i data-lucide="message-circle" style="width:17px;height:17px;"></i> WhatsApp Us
+        </a>
+        <a href="mailto:theaveronai@gmail.com" class="btn-g" style="font-size:.95rem;padding:.9rem 2.25rem;">
+          <i data-lucide="mail" style="width:17px;height:17px;"></i> Send an Email
+        </a>
+      </div>
+      <div class="cta-contacts">
+        <a href="tel:+923219437908" class="cta-link"><i data-lucide="phone"></i> +92 321 943 7908</a>
+        <a href="https://wa.me/923219437908" class="cta-link" target="_blank" rel="noopener"><i data-lucide="message-circle"></i> WhatsApp Chat</a>
+        <a href="mailto:theaveronai@gmail.com" class="cta-link"><i data-lucide="mail"></i> theaveronai@gmail.com</a>
+      </div>
+      <p class="cta-note">No commitment required · Free 30-min call · Results-focused conversation</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="ft-brand-name">Averon <em>Technology</em></div>
+        <p class="ft-tagline">AI-powered growth systems for modern brands that are serious about scaling.</p>
+        <div class="ft-socials">
+          <a href="https://www.instagram.com/theaverontech?igsh=MTRyMDBqYWtraDlhbA==" class="ft-social" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://www.facebook.com/share/1HRRKHBFiQ/" class="ft-social" target="_blank" rel="noopener" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="ft-social" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Social Media Management</a></li>
+          <li><a href="#services">AI Content Creation</a></li>
+          <li><a href="#services">Brand Strategy</a></li>
+          <li><a href="#services">AI Product Photography</a></li>
+          <li><a href="#services">Ads Strategy</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#portfolio">Our Work</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#process">How It Works</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <a href="mailto:theaveronai@gmail.com" class="ft-contact-item"><i data-lucide="mail"></i> theaveronai@gmail.com</a>
+        <a href="tel:+923219437908" class="ft-contact-item"><i data-lucide="phone"></i> +92 321 943 7908</a>
+        <a href="https://wa.me/923219437908" class="ft-contact-item" target="_blank" rel="noopener"><i data-lucide="message-circle"></i> WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="ft-copy">© 2026 Averon Technology. All rights reserved.</div>
+      <ul class="ft-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Init Lucide icons ── */
+lucide.createIcons();
+
+/* ── Scroll reveal ── */
+const rvEls = document.querySelectorAll('.rv');
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); }
+  });
+},{ threshold:0.08, rootMargin:'0px 0px -40px 0px' });
+rvEls.forEach(el => rvObs.observe(el));
+
+/* ── Portfolio filter ── */
+const pfBtns = document.querySelectorAll('.pf-btn');
+const portItems = document.querySelectorAll('.port-item');
+pfBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    pfBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    portItems.forEach(item => {
+      const cats = item.dataset.cats || '';
+      if(f === 'all' || cats.split(' ').includes(f)){
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+/* ── Pricing billing toggle ── */
+const billBtns = document.querySelectorAll('.bill-btn');
+const panels   = document.querySelectorAll('.price-panel');
+billBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    billBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const period = btn.dataset.period;
+    panels.forEach(p => {
+      p.classList.toggle('active', p.id === 'panel-' + period);
+    });
+  });
+});
+
+/* ── Stagger grid children ── */
+document.querySelectorAll('.prob-grid,.srv-grid,.proc-steps,.res-grid,.team-grid,.port-grid').forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => {
+    child.style.transitionDelay = (i * 0.065) + 's';
+  });
+});
+
+/* ── Mobile menu close on outside click ── */
+document.addEventListener('click', e => {
+  const menu = document.querySelector('.mobile-menu');
+  const hamburger = document.querySelector('.nav-hamburger');
+  if(menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
